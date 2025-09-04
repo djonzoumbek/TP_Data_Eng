@@ -1,4 +1,3 @@
-
 import os.path
 from datetime import datetime
 
@@ -11,26 +10,35 @@ import sqlite3
 import io
 
 
-SCOPES = ['https://www.googleapis.com/auth/drive']
+SCOPES = ['https://www.googleapis.com/auth/drive.readonly']
 SERVICE_ACCOUNT_FILE = "credentials.json"
 DATA_DIR = "data"
 RAW_DATA_DIR = os.path.join(DATA_DIR, "raw_data")
 
+
 def connect_to_drive():
     if not os.path.exists(SERVICE_ACCOUNT_FILE):
         raise FileExistsError("Credentials file not exists")
+    
+    with open(SERVICE_ACCOUNT_FILE, 'r') as f:
+        cred_content = f.read()
+        print(f"Credentials file length: {len(cred_content)}")
+    
     creds = service_account.Credentials.from_service_account_file(
         SERVICE_ACCOUNT_FILE, scopes=SCOPES)
     service = build('drive', 'v3', credentials=creds)
     return service
 
+ 
 def extract_clients(date: datetime, service = connect_to_drive()):
     FOLDER = "clients"
-    folder_exist = True if len(service.files().list(
-    q=f"name='{FOLDER}' and mimeType='application/vnd.google-apps.folder'",
-    spaces='drive',
-    fields='files(id, name)'
-    ).execute().get('files', [])) > 0 else False
+    folder_list = service.files().list(
+        q=f"name='{FOLDER}' and mimeType='application/vnd.google-apps.folder'",
+        spaces='drive',
+        fields='files(id, name)'
+    ).execute().get('files', [])
+    print(f"Found folders: {folder_list}")  # <-- Add this line for debugging
+    folder_exist = len(folder_list) > 0
     if not folder_exist:
         raise FileExistsError("Data folder not exists")
     
@@ -108,5 +116,5 @@ def extract_orders(date: datetime, db_path: str = "ecommerce_orders_may2024.db",
 
 
 if __name__=="__main__":
-    extract_products(datetime.strptime("2024-05-10", "%Y-%m-%d"))
+    extract_orders(datetime.strptime("2024-05-03", "%Y-%m-%d"))
     #extract_orders(datetime.strptime("2024-05-03", "%Y-%m-%d"))
