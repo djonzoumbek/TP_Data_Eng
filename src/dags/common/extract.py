@@ -12,7 +12,7 @@ import io
 
 
 SCOPES = ['https://www.googleapis.com/auth/drive']
-SERVICE_ACCOUNT_FILE = "massive-glyph-323908-5809907c52ef.json"
+SERVICE_ACCOUNT_FILE = "credentials.json"
 DATA_DIR = "data"
 RAW_DATA_DIR = os.path.join(DATA_DIR, "raw_data")
 
