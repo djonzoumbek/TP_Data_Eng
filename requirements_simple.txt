@@ -1,0 +1,9 @@
+# Dépendances principales pour le projet ecommerce-analytics
+pandas>=1.5.0
+numpy>=1.20.0
+pyarrow>=10.0.0  # Pour le support Parquet
+
+# Dépendances optionnelles pour développement
+jupyter>=1.0.0   # Pour notebooks d'analyse
+matplotlib>=3.5.0  # Pour visualisations futures
+seaborn>=0.11.0    # Pour graphiques avancés

@@ -9,3 +9,8 @@ logs/
 venv
 .env
 credentials.json
+__pycache__/
+compar.py
+guide_utilisation.py
+run_analytics.py
+exemple_analytics.py
