@@ -12,17 +12,15 @@ Pipeline complet d'analyse de données e-commerce avec les **3 calculs analytiqu
 ### 📋 Documentation
 - `README.md` - Documentation complète du projet
 - `QUICKSTART.md` - Guide démarrage 5 minutes
-- `requirements_simple.txt` - Dépendances essentielles
+- `requirements.txt` - Dépendances essentielles
 
 ### 🛠️ Code principal
 - `analytics_simple.py` - Module des 3 calculs analytiques
 - `run_analytics.py` - Exécution ultra-simple (3 lignes)
-- `guide_utilisation.py` - Exemples pratiques détaillés
 
 ### ⚙️ Modules avancés
 - `src/dags/common/clean.py` - Nettoyage de données
 - `src/dags/common/enrich.py` - Enrichissement (29+ colonnes)
-- `src/dags/common/analytics.py` - Analytics avancées
 
 ## 📊 Résultats obtenus
 
@@ -44,21 +42,6 @@ Raw Data (CSV) → Clean Data → Enriched Data → Analytics
 python run_analytics.py
 ```
 
-## 🏆 Points forts
-
-- **Architecture modulaire** : Extract → Clean → Enrich → Analytics  
-- **Code professionnel** : Docstrings, gestion d'erreurs, type hints
-- **Formats optimisés** : Parquet pour performance
-- **Documentation complète** : README, guide, exemples
-- **Prêt production** : Gestion robuste des cas d'erreur
-
-## 📈 Évolutions possibles
-
-- Intégration base de données
-- Tableaux de bord interactifs  
-- Automatisation avec scheduler
-- APIs REST pour les analyses
-- Machine Learning prédictif
 
 ---
 
